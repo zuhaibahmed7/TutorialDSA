@@ -1,0 +1,60 @@
+package DSA;
+
+public class isValidBST {
+	TreeNode root;
+	class TreeNode {
+		TreeNode left;
+		TreeNode right ;  
+		int data;
+		TreeNode(int data){
+			this.data=data;   
+		}
+	}
+	
+	public TreeNode insert(TreeNode root, int value) {
+		if(root==null) {
+			root= new TreeNode(value);
+			return root;
+		}
+		if(value>root.data) {
+			root.right=insert(root.right, value);
+		}
+		else {
+			root.left=insert(root.left, value);
+		}
+		return root;
+	}
+	
+	
+	TreeNode prev=null;
+	
+	public boolean isValid(TreeNode  root) {
+		if(root==null) {
+			return true;
+		}
+		if(!isValid(root.left)) {
+			return false;
+		}
+		if(prev!=null && root.data<=prev.data ) {
+			return false;
+		}
+		prev=root;
+		
+		return isValid(root.right);
+	}
+	
+	
+	public static void main(String[] args ) {
+		
+		isValidBST v = new isValidBST();
+		
+		v.root =v.insert(v.root, 5);
+		v.insert(v.root, 1);
+		v.insert(v.root, 7);
+		v.insert(v.root, 0);
+		v.insert(v.root, 6);
+		
+		System.out.print(v.isValid(v.root));
+
+	}
+}
