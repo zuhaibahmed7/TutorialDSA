@@ -1,0 +1,87 @@
+public class Main4 {
+    public static ListNode head;
+    public static class ListNode {
+        
+        int data;
+        public ListNode next;
+         
+        ListNode (int data){
+            this.data= data;
+            this.next=null;
+        }
+    }
+    public static void main(String [] args ){
+        Main4 m = new Main4();
+        m.head =new ListNode(10);
+        ListNode second = new ListNode(9);
+        ListNode third = new ListNode(8);
+        ListNode fourth = new ListNode(7);
+        ListNode fifth = new ListNode(6);
+        ListNode sixth = new ListNode(5);
+        ListNode seventh = new ListNode(4);
+        
+        
+        m.head.next= second;
+        second.next=third;
+        third.next=fourth;
+        fourth.next= fifth;
+        fifth.next=sixth;
+        sixth.next= third;
+        
+        
+        ListNode current= head;
+        
+        while(current!=null){
+            System.out.println(current.data + " ");
+            current = current.next;
+        }
+        
+        
+        
+        // deleting the key value in the linked list
+        int key = 4;
+        ListNode temp =null;
+        ListNode cur= head;
+        
+        while(cur!= null && cur.data!= key) {
+            temp =cur;
+            cur = cur.next;
+            }
+        if(cur==null){
+                return ;
+            }
+        else
+            temp.next=cur.next;
+            
+        
+        printList(head);
+        
+        // checking if there is any loop in linkdelist
+        System.out.println(SearchLoop(head));
+        System.out.println(Main4..data);
+        
+    }
+    
+    public static void printList(ListNode head){
+        ListNode tmp= head;
+        while (tmp!=null){
+            System.out.print(tmp.data + " ");
+            tmp = tmp.next;
+        }
+        System.out.println();
+    }
+    
+    // checking if there is any loop in linkdelist
+    static boolean SearchLoop(ListNode head){
+        ListNode fastPtr= head;
+        ListNode slowPtr = head;
+        while (fastPtr!=null && fastPtr.next!=null){
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+            if(slowPtr==fastPtr){
+                return true;
+            }
+        }
+        return false;
+    }
+}
