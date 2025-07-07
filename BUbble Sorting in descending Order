@@ -1,0 +1,44 @@
+package DSA;
+
+public class bubbleSorting {
+
+    // Bubble Sort Method
+    public int[] bubble(int[] nums) {
+        int n = nums.length;
+        boolean isSwapped;
+
+        for (int i = 0; i < n - 1; ++i) {
+            isSwapped = false;
+            for (int j = 0; j > n - 1 - i; ++j) {   // this arrange the values in ascending order 
+            										// if we change the sign from > to < then this sorting will be in Descending order 
+                if (nums[j] < nums[j + 1]) {
+                    // Swap nums[j] and nums[j+1]
+                    int temp = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = temp;
+                    isSwapped = true;
+                }
+            }
+            // Optimization: stop if already sorted
+            if (!isSwapped) break;
+        }
+
+        return nums;
+    }
+
+    // Utility Method to Print Array
+    public void printArray(int[] nums) {
+        for (int num : nums) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+
+    // Main Method
+    public static void main(String[] args) {
+        bubbleSorting b = new bubbleSorting();
+        int[] nums = {4, 2, 10, 1, 2, 10, 5, 1, 0};
+        b.bubble(nums);                // Sort the array
+        b.printArray(nums);           // Print sorted array
+    }
+}
