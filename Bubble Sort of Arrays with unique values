@@ -1,0 +1,35 @@
+package DSA;
+public class bubbleSorting {
+	public static void bubble(int nums[]) {
+		int n= nums.length;
+		boolean isSwapped;
+		for(int i =0; i<n-1;++i) {
+			isSwapped =false;
+			for( int j=0; j<n-1-i;++j) {
+				if(nums[j]>nums[j+1]) {
+					int temp=nums[j];
+					nums[j]=nums[j+1];
+					nums[j+1]=temp;
+					isSwapped =true;
+				}
+				if(isSwapped== false) {
+					break;
+				}
+			}
+		}
+		
+	}
+	public void printArray(int [] arr) {
+		for(int i=0; i<arr.length;++i) {
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+	}
+
+	public static void main(String [] args ) {
+		bubbleSorting b = new bubbleSorting();
+		int nums[] = {5,1,2,9,10};
+		bubble(nums);
+		b.printArray(nums);
+	}
+}
