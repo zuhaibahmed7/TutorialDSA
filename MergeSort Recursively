@@ -1,0 +1,49 @@
+package DSA;
+
+import java.util.Arrays;
+
+public class mergeSortRecursively {
+	public static void  sort(int inputArr[], int temp[], int low, int high) {
+		if(low<high) {
+			int mid = low+ (high - low)/2;
+			sort(inputArr, temp, low, mid);
+			sort(inputArr, temp, mid+1, high);
+			merge(inputArr, temp, low, mid, high);
+		}
+	}
+	
+	public  static void merge(int inputArr[], int temp[], int low, int mid, int high) {
+		for(int i=low; i<=high; ++i) {
+			temp[i]=inputArr[i];
+		}
+		int i=low, j=mid+1, k = low;
+		
+		while ( i<=mid && j <=high) {
+			if(temp[i]<temp[j]) {
+				inputArr[k]=temp[i];
+				i++;
+			}
+			else 
+			{
+				inputArr[k]=temp[j];
+				j++;
+				
+			}
+			k++;
+		}
+		while(i<=mid) {
+			inputArr[k]=temp[i];
+			i++;
+			k++;			
+		}
+	}
+
+	public static void main(String [] args ) {
+		 
+		int nums [] = new int[] {5,9,2,4,3};
+		int length= nums.length;
+		int temp[]= new int [length];
+		sort(nums, temp, 0, length-1);
+		System.out.println(Arrays.toString(nums));
+	}
+}
